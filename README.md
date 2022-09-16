@@ -7,9 +7,6 @@ Escreva um ou dois parágrafos resumindo o objetivo do seu projeto.
 * João Pedro Mairinque de Azevedo
 * Leonardo Augusto Pereira do Carmo
 * Rafael Augusto Vieira de Almeida
-* Nome completo do aluno 4
-* Nome completo do aluno 4
-* Nome completo do aluno 4
 
 ## Professores responsáveis
 
