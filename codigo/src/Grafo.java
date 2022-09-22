@@ -38,11 +38,12 @@ public class Grafo {
     }
 
     public void carregar(String nomeArquivo){
+        ArquivoTextoLeitura arq = new ArquivoTextoLeitura(nomeArquivo);
 
     }
 
     public void salvar(String nomeArquivo){
-        
+        ArquivoTextoEscrita arq = new ArquivoTextoEscrita(nomeArquivo);
     }
     /**
      * Adiciona, se possível, um vértice ao grafo. O vértice é auto-nomeado com o próximo id disponível.
