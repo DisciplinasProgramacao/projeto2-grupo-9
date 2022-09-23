@@ -38,12 +38,11 @@ public class Grafo {
     }
 
     public void carregar(String nomeArquivo){
-        ArquivoTextoLeitura arq = new ArquivoTextoLeitura(nomeArquivo);
 
     }
 
     public void salvar(String nomeArquivo){
-        ArquivoTextoEscrita arq = new ArquivoTextoEscrita(nomeArquivo);
+        
     }
     /**
      * Adiciona, se possível, um vértice ao grafo. O vértice é auto-nomeado com o próximo id disponível.
@@ -78,7 +77,27 @@ public class Grafo {
     }
 
     public Aresta existeAresta(int verticeA, int verticeB){
-       return null;
+       Vertice aux = vertices.find(verticeA);
+       if (aux.existeAresta(verticeB) != null)
+    	   return aux.existeAresta(verticeB);
+       else 
+    	   return null;
+
+    }
+    
+    public boolean existeCaminho(int verticeA, int verticeB) {
+    	
+    	Vertice aux = vertices.find(verticeA);
+    	Vertice aux2;
+    	int tamanho = 0;
+    	
+    	if (vertices.find(verticeA).existeAresta(verticeB) != null)
+    		return true;
+    	
+    	if (tamanho == vertices.size())
+    		return false;
+    	
+    	return false;
     }
     
     /**
@@ -99,11 +118,12 @@ public class Grafo {
     }
     
     public int tamanho(){
-        return 0;
+        return vertices.size();
     }
 
     public int ordem(){
         return this.vertices.size();
     }
+    
 
 }
