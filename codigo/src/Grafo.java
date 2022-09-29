@@ -112,15 +112,23 @@ public class Grafo {
         return false;
     }
 
+    public Lista<Vertice> gerarCaminho(Vertice inicio, Vertice fim){
+        Lista<Vertice> caminho = new Lista<Vertice>(); 
+        caminho.add(inicio);
+
+        
+    }
+
     /**
      * Verifica se este é um grafo completo.
      * 
      * @return TRUE para grafo completo, FALSE caso contrário
      */
     public boolean completo() {
-        boolean resposta = true;
+        int qtdVertices = this.ordem();
+        int qtdArestas = this.tamanho();
 
-        return resposta;
+        return qtdVertices*(qtdVertices-1)/2 == qtdArestas;
     }
 
     public Grafo subGrafo(Lista<Vertice> vertices) {
