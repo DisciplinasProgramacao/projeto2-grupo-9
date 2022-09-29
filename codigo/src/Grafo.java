@@ -63,13 +63,13 @@ public class Grafo {
      * @param origem  Vértice de origem
      * @param destino Vértice de destino
      */
-    public boolean addAresta(int origem, int destino, int peso) {
+    public boolean addAresta(int origem, int destino) {
         boolean adicionou = false;
         Vertice saida = this.existeVertice(origem);
         Vertice chegada = this.existeVertice(destino);
         if (saida != null && chegada != null) {
-            saida.addAresta(destino, peso);
-            chegada.addAresta(origem, peso);
+            saida.addAresta(destino, 0);
+            chegada.addAresta(origem, 0);
             adicionou = true;
             this.qtdArestas++;
 
