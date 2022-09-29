@@ -43,8 +43,8 @@ public class Vertice {
      * @param peso Peso da aresta (1 para grafos não ponderados)
      * @param dest Vértice de destino
      */
-    public boolean addAresta(int destino){
-        return this.arestas.add(destino,new Aresta(0, destino));
+    public boolean addAresta(int destino, int peso){
+        return this.arestas.add(destino,new Aresta(peso, destino));
     }
 
     /**
