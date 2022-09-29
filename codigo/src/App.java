@@ -8,8 +8,8 @@ public class App {
        grafo.addVertice(2);
        grafo.addVertice(3);
        
-       grafo.addAresta(1, 2);
-       grafo.addAresta(2, 3);
+       grafo.addAresta(1, 2, 0);
+       grafo.addAresta(2, 3, 0);
        
        System.out.println(grafo.existeCaminho(1, 3));
        
