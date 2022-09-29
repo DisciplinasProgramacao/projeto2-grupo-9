@@ -73,15 +73,24 @@ public class Grafo {
     }
 
     public Vertice existeVertice(int idVertice){
-        return this.vertices.find(idVertice);
+        if(idVertice >= 0 && idVertice < this.ordem())
+            return this.vertices.find(idVertice);
+            
+        return null;
     }
 
     public Aresta existeAresta(int verticeA, int verticeB){
-       Vertice aux = vertices.find(verticeA);
-       if (aux.existeAresta(verticeB) != null)
-    	   return aux.existeAresta(verticeB);
-       else 
-    	   return null;
+       boolean verticesExistem = (existeVertice(verticeA) != null && existeVertice(verticeB) != null);
+
+       if(verticesExistem){
+           Vertice aux = vertices.find(verticeA);
+           if (aux.existeAresta(verticeB) != null)
+               return aux.existeAresta(verticeB);
+           else 
+               return null;
+       }
+
+       return null;
 
     }
     
