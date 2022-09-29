@@ -28,7 +28,7 @@
 public class Grafo {
     public final String nome;
     private ABB<Vertice> vertices;
-    private int qtdArestas;
+    protected int qtdArestas;
 
     /**
      * Construtor. Cria um grafo vazio com capacidade para MAX_VERTICES
@@ -71,7 +71,7 @@ public class Grafo {
             saida.addAresta(destino, peso);
             chegada.addAresta(origem, peso);
             adicionou = true;
-            qtdArestas++;
+            this.qtdArestas++;
 
         }
 
