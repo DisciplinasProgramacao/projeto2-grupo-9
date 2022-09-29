@@ -22,7 +22,7 @@
  * SOFTWARE.
  */
 
-/** 
+/**
  * Classe básica para um Grafo simples
  */
 public class Grafo {
@@ -32,107 +32,115 @@ public class Grafo {
     /**
      * Construtor. Cria um grafo vazio com capacidade para MAX_VERTICES
      */
-    public Grafo(String nome){
+    public Grafo(String nome) {
         this.nome = nome;
         this.vertices = new ABB<>();
     }
 
-    public void carregar(String nomeArquivo){
+    public void carregar(String nomeArquivo) {
 
     }
 
-    public void salvar(String nomeArquivo){
-        
+    public void salvar(String nomeArquivo) {
+
     }
+
     /**
-     * Adiciona, se possível, um vértice ao grafo. O vértice é auto-nomeado com o próximo id disponível.
+     * Adiciona, se possível, um vértice ao grafo. O vértice é auto-nomeado com o
+     * próximo id disponível.
      */
-    public boolean addVertice(int id){
+    public boolean addVertice(int id) {
         Vertice novo = new Vertice(id);
         return this.vertices.add(id, novo);
     }
 
     /**
-     * Adiciona uma aresta entre dois vértices do grafo. 
+     * Adiciona uma aresta entre dois vértices do grafo.
      * Não verifica se os vértices pertencem ao grafo.
-     * @param origem Vértice de origem
+     * 
+     * @param origem  Vértice de origem
      * @param destino Vértice de destino
      */
-    public boolean addAresta(int origem, int destino, int peso){
+    public boolean addAresta(int origem, int destino, int peso) {
         boolean adicionou = false;
         Vertice saida = this.existeVertice(origem);
         Vertice chegada = this.existeVertice(destino);
-        if(saida!=null && chegada !=null){
+        if (saida != null && chegada != null) {
             saida.addAresta(destino, peso);
             chegada.addAresta(origem, peso);
             adicionou = true;
         }
-        
+
         return adicionou;
 
     }
 
-    public Vertice existeVertice(int idVertice){
-        if(idVertice >= 0 && idVertice < this.ordem())
+    public Vertice existeVertice(int idVertice) {
+        if (idVertice >= 0 && idVertice < this.ordem())
             return this.vertices.find(idVertice);
-            
+
         return null;
     }
 
-    public Aresta existeAresta(int verticeA, int verticeB){
-       boolean verticesExistem = (existeVertice(verticeA) != null && existeVertice(verticeB) != null);
+    public Aresta existeAresta(int verticeA, int verticeB) {
+        boolean verticesExistem = (existeVertice(verticeA) != null && existeVertice(verticeB) != null);
 
-       if(verticesExistem){
-           Vertice aux = vertices.find(verticeA);
-           if (aux.existeAresta(verticeB) != null)
-               return aux.existeAresta(verticeB);
-           else 
-               return null;
-       }
+        if (verticesExistem) {
+            Vertice aux = vertices.find(verticeA);
+            if (aux.existeAresta(verticeB) != null)
+                return aux.existeAresta(verticeB);
+            else
+                return null;
+        }
 
-       return null;
+        return null;
 
     }
-    
+
     public boolean existeCaminho(int verticeA, int verticeB) {
-    	
-    	Vertice aux = vertices.find(verticeA);
-    	Vertice aux2;
-    	int tamanho = 0;
-    	
-    	if (vertices.find(verticeA).existeAresta(verticeB) != null)
-    		return true;
-    	
-    	if (tamanho == vertices.size())
-    		return false;
-    	
-    	return false;
+
+        Vertice aux = vertices.find(verticeA);
+        Vertice aux2;
+        int tamanho = 0;
+
+        if (vertices.find(verticeA).existeAresta(verticeB) != null)
+            return true;
+
+        if (tamanho == vertices.size())
+            return false;
+
+        return false;
     }
-    
+
     /**
-     * Verifica se este é um grafo completo. 
+     * Verifica se este é um grafo completo.
+     * 
      * @return TRUE para grafo completo, FALSE caso contrário
      */
-    public boolean completo(){
+    public boolean completo() {
         boolean resposta = true;
-        
-       return resposta;
+
+        return resposta;
     }
 
-    public Grafo subGrafo(Lista<Vertice> vertices){
-        Grafo subgrafo = new Grafo("Subgrafo de "+this.nome);
-        
+    public Grafo subGrafo(Lista<Vertice> vertices) {
+        Grafo subgrafo = new Grafo("Subgrafo de " + this.nome);
+
+        if (vertices.tamanho() < 1)
+            return null;
+
+        for (int i = 0; i < vertices.tamanho(); i++)
+            subgrafo.vertices.add(vertices.get(i).id(), vertices.get(i));
 
         return subgrafo;
     }
-    
-    public int tamanho(){
+
+    public int tamanho() {
         return vertices.size();
     }
 
-    public int ordem(){
+    public int ordem() {
         return this.vertices.size();
     }
-    
 
 }

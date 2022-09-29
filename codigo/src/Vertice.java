@@ -56,6 +56,10 @@ public class Vertice {
         return this.arestas.find(destino);
 
     }
+
+    public int id(){
+        return this.id;
+    }
     
     /**
      * Retorna o grau do vértice

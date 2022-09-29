@@ -9,6 +9,14 @@ public class Lista<T> {
         this.data = new LinkedList<>();
     }
 
+    public T get(int index){
+        return this.data.get(index);
+    }
+
+    public int tamanho(){
+        return this.data.size();
+    }
+
     public boolean add(T newElement) {
         return this.data.add(newElement);
     }
