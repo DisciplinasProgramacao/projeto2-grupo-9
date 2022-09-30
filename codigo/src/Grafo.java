@@ -207,5 +207,9 @@ public class Grafo {
     public int ordem() {
         return this.vertices.size();
     }
-
+    
+    public Vertice[] ImprimirGrafo() {
+    	
+    	return this.vertices.allElements(null);
+    }
 }
