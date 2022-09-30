@@ -39,9 +39,62 @@ public class Grafo {
         this.qtdArestas = 0;
     }
 
-    public void carregar(String nomeArquivo) {
+    public boolean carregar(String path){
 
-    }
+        File arquivo = new File(path);
+
+        try(FileReader fileReader = new FileReader(arquivo)){
+
+            try (BufferedReader bufferedReader = new BufferedReader(fileReader)) {
+                
+                String linha;
+                int linha_referencia = 0;
+
+                linha = bufferedReader.readLine();
+
+                String divisao_matriz[] = linha.split("-");
+
+                for(int i = 0; i < divisao_matriz.length; i++){
+                    
+                    this.addVertice(new Vertice(i).id());
+
+                }
+
+
+                while(linha != null){
+
+                    divisao_matriz = linha.split("-");
+
+                    for(int i = 0; i < divisao_matriz.length; i++){
+
+                        if(divisao_matriz[i].equals("1")){
+
+                            this.addAresta(i, linha_referencia);
+
+                        }
+    
+                    }
+                    
+                    linha_referencia++;
+                    linha = bufferedReader.readLine();
+
+                }
+
+                bufferedReader.close();
+
+            } catch (Exception e) {
+                return false;
+            }
+
+            fileReader.close();
+            
+            return true;
+            
+        }catch(Exception e){
+            return false;
+        }
+
+    } 
 
     public void salvar(String nomeArquivo) {
 
